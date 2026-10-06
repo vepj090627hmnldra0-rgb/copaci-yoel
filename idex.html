@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestión Ciudadana | Tu Ciudad, Tu Participación</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+--primary-color: #22c55e;
+--secondary-color: #15803d;
+--accent-color: #f59e0b;
+--bg-dark: #0f172a;
+--bg-card: #1e293b;
+--text-light: #f8fafc;
+--text-muted: #94a3b8;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', sans-serif;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+background-color: var(--bg-dark);
+color: var(--text-light);
+line-height: 1.6;
+}
+
+/* Navegación */
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1.5rem 5%;
+background-color: rgba(15, 23, 42, 0.95);
+position: sticky;
+top: 0;
+z-index: 100;
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+font-size: 1.5rem;
+font-weight: 700;
+color: var(--primary-color);
+}
+
+.nav-links {
+display: flex;
+list-style: none;
+gap: 2rem;
+}
+
+.nav-links a {
+color: var(--text-light);
+text-decoration: none;
+font-weight: 500;
+transition: color 0.3s;
+}
+
+.nav-links a:hover {
+color: var(--primary-color);
+}
+
+/* Sección principal */
+.hero {
+min-height: 80vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 2rem 1rem;
+background:
+radial-gradient(circle at center, #14532d 0%, #0f172a 65%);
+}
+
+.hero h1 {
+font-size: 3rem;
+margin-bottom: 1rem;
+background: linear-gradient(to right, #4ade80, #facc15);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.hero p {
+font-size: 1.2rem;
+max-width: 750px;
+color: var(--text-muted);
+margin-bottom: 2rem;
+}
+
+.btn {
+display: inline-block;
+padding: 0.8rem 2rem;
+background-color: var(--primary-color);
+color: white;
+text-decoration: none;
+border-radius: 30px;
+font-weight: 600;
+transition: transform 0.3s, background-color 0.3s;
+border: none;
+cursor: pointer;
+}
+
+.btn:hover {
+background-color: var(--secondary-color);
+transform: translateY(-3px);
+}
+
+/* Contenido */
+.container {
+max-width: 1200px;
+margin: 4rem auto;
+padding: 0 1.5rem;
+}
+
+.section-title {
+text-align: center;
+font-size: 2rem;
+margin-bottom: 3rem;
+position: relative;
+}
+
+.section-title::after {
+content: '';
+display: block;
+width: 60px;
+height: 4px;
+background-color: var(--primary-color);
+margin: 0.5rem auto 0;
+border-radius: 2px;
+}
+
+/* Tarjetas */
+.cards-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2rem;
+}
+
+.card {
+background-color: var(--bg-card);
+border-radius: 12px;
+padding: 2rem;
+border: 1px solid rgba(255, 255, 255, 0.05);
+transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+color: var(--primary-color);
+margin-bottom: 1rem;
+}
+
+.card p {
+color: var(--text-muted);
+font-size: 0.95rem;
+}
+
+/* Formulario */
+.form-section {
+background-color: var(--bg-card);
+padding: 2rem;
+border-radius: 12px;
+margin-top: 4rem;
+}
+
+.form-section h2 {
+text-align: center;
+margin-bottom: 0.5rem;
+}
+
+.form-section > p {
+text-align: center;
+color: var(--text-muted);
+margin-bottom: 2rem;
+}
+
+.form-group {
+margin-bottom: 1.2rem;
+}
+
+.form-group label {
+display: block;
+margin-bottom: 0.5rem;
+font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+width: 100%;
+padding: 0.8rem;
+border-radius: 8px;
+border: 1px solid #475569;
+background-color: #0f172a;
+color: white;
+outline: none;
+}
+
+.form-group textarea {
+resize: vertical;
+min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+border-color: var(--primary-color);
+}
+
+.form-button {
+text-align: center;
+margin-top: 1rem;
+}
+
+/* Información */
+.info-box {
+margin-top: 4rem;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 2rem;
+}
+
+.info-item {
+background-color: var(--bg-card);
+padding: 1.5rem;
+border-radius: 12px;
+text-align: center;
+}
+
+.info-item span {
+font-size: 2rem;
+}
+
+.info-item h3 {
+margin: 0.7rem 0;
+color: var(--primary-color);
+}
+
+.info-item p {
+color: var(--text-muted);
+}
+
+/* Footer */
+footer {
+background-color: #070a12;
+text-align: center;
+padding: 2rem;
+margin-top: 4rem;
+border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer p {
+color: var(--text-muted);
+font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+nav {
+flex-direction: column;
+gap: 1rem;
+}
+
+.nav-links {
+gap: 1rem;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.hero h1 {
+font-size: 2.2rem;
+}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navegación -->
+<nav>
+<div class="logo">Gestión Ciudadana</div>
+
+<ul class="nav-links">
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="#reporte">Reporte</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
+</nav>
+
+
+<!-- Inicio -->
+<main id="inicio" class="hero">
+
+<h1>Gestión Ciudadana</h1>
+
+<p>
+Bienvenidos a nuestro espacio de gestión ciudadana, diseñado para
+facilitar la participación de los ciudadanos, realizar reportes
+y conocer información importante sobre los servicios de la comunidad.
+</p>
+
+<a href="#servicios" class="btn">Conocer servicios</a>
+
+</main>
+
+
+<!-- Servicios -->
+<div class="container" id="servicios">
+
+<h2 class="section-title">Servicios Ciudadanos</h2>
+
+<div class="cards-grid">
+
+<div class="card">
+<h3>📢 Reportes Ciudadanos</h3>
+
+<p>
+Permite informar sobre problemas en la comunidad, como
+alumbrado público, calles dañadas, basura o falta de servicios.
+</p>
+</div>
+
+
+<div class="card">
+<h3>📄 Trámites</h3>
+
+<p>
+Consulta información sobre diferentes trámites y servicios
+que pueden ayudar a los ciudadanos a realizar sus gestiones.
+</p>
+</div>
+
+
+<div class="card">
+<h3>🤝 Participación Ciudadana</h3>
+
+<p>
+La participación de los ciudadanos ayuda a identificar
+necesidades y proponer soluciones para mejorar la comunidad.
+</p>
+</div>
+
+</div>
+
+
+<!-- Formulario de reporte -->
+<div class="form-section" id="reporte">
+
+<h2>Realiza un Reporte Ciudadano</h2>
+
+<p>
+Completa el siguiente formulario para registrar una situación
+que necesite atención.
+</p>
+
+
+<form id="reportForm">
+
+<div class="form-group">
+<label for="name">Nombre:</label>
+<input
+type="text"
+id="name"
+placeholder="Escribe tu nombre"
+required
+>
+</div>
+
+
+<div class="form-group">
+<label for="type">Tipo de reporte:</label>
+
+<select id="type" required>
+
+<option value="">
+Selecciona una opción
+</option>
+
+<option value="Alumbrado público">
+Alumbrado público
+</option>
+
+<option value="Calles">
+Calles o baches
+</option>
+
+<option value="Basura">
+Recolección de basura
+</option>
+
+<option value="Agua">
+Agua potable
+</option>
+
+<option value="Otro">
+Otro
+</option>
+
+</select>
+</div>
+
+
+<div class="form-group">
+<label for="location">Ubicación:</label>
+
+<input
+type="text"
+id="location"
+placeholder="Indica dónde ocurre el problema"
+required
+>
+</div>
+
+
+<div class="form-group">
+<label for="description">Descripción:</label>
+
+<textarea
+id="description"
+placeholder="Describe el problema"
+required
+></textarea>
+</div>
+
+
+<div class="form-button">
+
+<button type="submit" class="btn">
+Enviar reporte
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+
+<!-- Información -->
+<div class="info-box" id="contacto">
+
+<div class="info-item">
+
+<span>🏛️</span>
+
+<h3>Gobierno</h3>
+
+<p>
+Información y servicios relacionados con la administración
+pública.
+</p>
+
+</div>
+
+
+<div class="info-item">
+
+<span>📱</span>
+
+<h3>Atención ciudadana</h3>
+
+<p>
+Mantente informado y participa en las actividades de tu comunidad.
+</p>
+
+</div>
+
+
+<div class="info-item">
+
+<span>📧</span>
+
+<h3>Contacto</h3>
+
+<p>
+gestionciudadana@ejemplo.com
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Footer -->
+<footer>
+
+<p>
+&copy; 2026 Gestión Ciudadana. Proyecto escolar.
+</p>
+
+</footer>
+
+
+<!-- JavaScript -->
+<script>
+
+const reportForm = document.getElementById("reportForm");
+
+reportForm.addEventListener("submit", function(event) {
+
+event.preventDefault();
+
+const name = document.getElementById("name").value;
+const type = document.getElementById("type").value;
+
+alert(
+"¡Reporte registrado correctamente!\n\n" +
+"Ciudadano: " + name + "\n" +
+"Tipo de reporte: " + type
+);
+
+reportForm.reset();
+
+});
+
+</script>
+
+</body>
+</html>
